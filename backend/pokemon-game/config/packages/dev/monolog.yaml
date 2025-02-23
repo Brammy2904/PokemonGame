@@ -1,0 +1,13 @@
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: warning  # Minder spammy, behoudt wel warnings en errors
+            channels: ["!event", "!doctrine"]  # Vermijd event-logs, behoud je eigen logs
+
+        console:
+            type: console
+            process_psr_3_messages: false
+            level: notice  # Hiermee zie je nog steeds normale logs in de console
+            channels: ["!event", "!doctrine"]  
